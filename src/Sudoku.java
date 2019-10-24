@@ -4,16 +4,16 @@ public class Sudoku {
     private int [] midRow = new int[3];
     private int [] bottomRow = new int[3];
 
-    public Sudoku(){
-        this(null,null,null);
+    /*public Sudoku(){
+        //this(null,null,null);
     }
+*/
+    public Sudoku(){
 
-    public Sudoku(int[] topRow, int[] midRow, int[] bottomRow){
-
-        System.out.println("Constructor");
-        populateRow(topRow);
-        populateRow(midRow);
-        populateRow(bottomRow);
+       // System.out.println("Constructor");
+        populateRow(this.topRow);
+        populateRow(this.midRow);
+        populateRow(this.bottomRow);
         //setMidRow(populateRow(midRow));
         //setBottomRow(populateRow(bottomRow));
 
@@ -46,12 +46,12 @@ public class Sudoku {
     //creating a method to populate the array of int
     public void populateRow(int[] num){
 
-        for(int i=0;i<4;i++){
+        for(int i=0;i<num.length;i++){
 
 
 
-            num[i] = 1;//(int)((Math.random()*((9-1)+1))+1);
-            System.out.println("populateArray");
+            num[i] = (int)((Math.random()*((9-1)+1))+1);
+            //System.out.println("populateArray");
 
 
         }
@@ -60,7 +60,7 @@ public class Sudoku {
     }
 
     public String listRowContent(int[] num){
-        System.out.println("display Array");
+        //System.out.println("display Array");
         String content="";
         for(int i=0;i<num.length;i++){
 
