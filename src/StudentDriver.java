@@ -19,16 +19,26 @@ public class StudentDriver {
 
             index++;
         }
-
+            int highestAge = 0;
+            String topAge = "";
         for(int i=0;i<underGradStudents.length;i++) {
 
-            if(!underGradStudents[i].equals(null))
-            jta.append(underGradStudents[i].toString());
+            if(underGradStudents[i] != null) {
+                jta.append(underGradStudents[i].toString());
+                if (underGradStudents[i].getAge() > highestAge) {
+                    highestAge = underGradStudents[i].getAge();
+                    topAge = underGradStudents[i].toString();
+                }
+            }
             else
                 break;
 
         }
 
         JOptionPane.showMessageDialog(null,jta,"Message",JOptionPane.INFORMATION_MESSAGE);
+
+        JOptionPane.showMessageDialog(null,topAge,"Message",JOptionPane.INFORMATION_MESSAGE);
     }
+
+
 }
