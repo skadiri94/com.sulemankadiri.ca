@@ -8,6 +8,8 @@ public class Sudoku {
         //this(null,null,null);
     }
 */
+
+   // (int[] topRow, int[] midRow, int[] bottomRow //this is not working when its being passed into the constructor
     public Sudoku(){
 
        // System.out.println("Constructor");
@@ -64,7 +66,7 @@ public class Sudoku {
         String content="";
         for(int i=0;i<num.length;i++){
 
-            content +=  num[i] +", ";
+            content +=  num[i] +" ";
         }
         return content;
 
