@@ -1,80 +1,95 @@
+
+/**The Sudoko Generator**/
 public class Sudoku {
 
-    private int [] topRow = new int[3];
-    private int [] midRow = new int[3];
-    private int [] bottomRow = new int[3];
+    private int[] numbers[];
+    private int numOfRC; //number of rows and columns.
+    private int missingNum; // number of missing digits.
+    private int sqrtOfN; //square root of number of numOfColRow.
 
-    /*public Sudoku(){
-        //this(null,null,null);
-    }
-*/
 
-   // (int[] topRow, int[] midRow, int[] bottomRow //this is not working when its being passed into the constructor
-    public Sudoku(){
+    public Sudoku(int numOfRC, int missingN) {
 
-       // System.out.println("Constructor");
-        populateRow(this.topRow);
-        populateRow(this.midRow);
-        populateRow(this.bottomRow);
-        //setMidRow(populateRow(midRow));
-        //setBottomRow(populateRow(bottomRow));
+        setNumOfRC(numOfRC);
+        setMissingNum(missingN);
 
 
     }
 
-    public void setTopRow(int[] topRow) {
-        this.topRow = topRow;
+    /**setters of the Numbers **/
+    public void setNumOfRC(int numOfRC) {
+        this.numOfRC = numOfRC;
     }
 
-    public void setMidRow(int[] midRow) {
-        this.midRow = midRow;
+    public void setMissingNum(int missingNum) {
+        this.missingNum = missingNum;
     }
 
-    public void setBottomRow(int[] bottomRow) {
-        this.bottomRow = bottomRow;
-    }
+    /**end of setter methods**/
 
-    public int[] getTopRow() {
-        return topRow;
-    }
+    /**generating the Sudoku numbers **/
 
-    public int[] getMidRow() {
-        return midRow;
-    }
+    public void cellGenerator(int row, int col){
 
-    public int[] getBottomRow() {
-        return bottomRow;
-    }
-    //creating a method to populate the array of int
-    public void populateRow(int[] num){
+        int digits;
 
-        for(int i=0;i<num.length;i++){
+        for(int i = 0; i < sqrtOfN; i++){
 
+            for(int j = 0; j < sqrtOfN; j++){
 
-
-            num[i] = (int)((Math.random()*((9-1)+1))+1);
-            //System.out.println("populateArray");
-
-
+            }
         }
 
-        //return num;
     }
 
-    public String listRowContent(int[] num){
-        //System.out.println("display Array");
-        String content="";
-        for(int i=0;i<num.length;i++){
+    // Returns false if given 3 x 3 block contains num.
+    boolean unUsedInBox(int rowStart, int colStart, int num)
+    {
+        for (int i = 0; i<numOfRC; i++)
+            for (int j = 0; j<numOfRC; j++)
+                if (numbers[rowStart+i][colStart+j]==num)
+                    return false;
 
-            content +=  num[i] +" ";
+        return true;
+    }
+
+
+    //Generating random number
+
+    public int genRadomNum(int num){
+        return (int) Math.floor((Math.random()*num+1));
+    }
+
+    //check if the digit already exist in Row
+    public boolean alreadyPickedRow(int i, int num){
+
+        for(int j = 0; j < numOfRC; j++)
+            if(numbers[i][j] == num)
+                return false;
+        return true;
+    }
+
+    //check if the digit already exist in Column
+    public boolean alreadyPickedCol(int j, int num){
+
+        for(int i = 0; i < numOfRC; i++)
+            if(numbers[i][j] == num)
+                return false;
+        return true;
+    }
+
+    public String toString(){
+
+        for (int i = 0; i<numOfRC; i++)
+        {
+            for (int j = 0; j<numOfRC; j++)
+                System.out.print(numbers[i][j] + " ");
+            System.out.println();
         }
-        return content;
-
+        System.out.println();
     }
 
 
-    public String toString() {
-        System.out.println("listRowContent(topRow)");
-        return String.format("%s\n%s\n%s",listRowContent(topRow),listRowContent(midRow),listRowContent(bottomRow));
-    }
 }
+
+
