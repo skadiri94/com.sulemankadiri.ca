@@ -17,11 +17,13 @@ public class Grid extends JFrame{
 		p.setLayout(new GridLayout(9,9));
 		for(int i=0;i<81;i++){
 			buttons[i]=new JTextField();
+			buttons[i].setHorizontalAlignment(JTextField.CENTER);
+			buttons[i].setDocument(new JTextFieldLimit(1));
 
 			p.add(buttons[i]);
 		}
 		add(p);
-		
+
 		setVisible(true);
 	}
 }
