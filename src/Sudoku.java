@@ -18,7 +18,6 @@ public class Sudoku {
         setSqrtOfN(sqrtOfN);
         numbers = new int[numOfRC][numOfRC];
 
-        System.out.println(numOfRC);
 
     }
 
@@ -33,8 +32,8 @@ public class Sudoku {
 
     public void setSqrtOfN(int sqrtOfN) {
 
-        Double SRNd = Math.sqrt(numOfRC);
-        sqrtOfN = SRNd.intValue();
+        Double sqrtOfND = Math.sqrt(numOfRC);
+        sqrtOfN = sqrtOfND.intValue();
 
         this.sqrtOfN = sqrtOfN;
     }
@@ -86,9 +85,9 @@ public class Sudoku {
 
                     num = genRadomNum(numOfRC);
 
-                System.out.println("Random Number" + num);
+                //System.out.println("Random Number" + num);
                 numbers[row+i][col+j] = num;
-                System.out.println("final Number" + numbers);
+
             }
         }
     }
