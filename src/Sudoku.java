@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.util.Scanner;
-
 /**The Sudoko Generator**/
 public class Sudoku {
 
@@ -13,7 +10,7 @@ public class Sudoku {
     public Sudoku(int numOfRC, int missingN) {
 
         setNumOfRC(numOfRC);
-        System.out.println("Constructor" + numOfRC);
+
         setMissingNum(missingN);
         setSqrtOfN(sqrtOfN);
         numbers = new int[numOfRC][numOfRC];
@@ -77,13 +74,13 @@ public class Sudoku {
 
     void populateSudoku(int row,int col)
     {
-        int num;
+        int num = 0;
         for (int i=0; i<sqrtOfN; i++)
         {
             for (int j=0; j<sqrtOfN; j++)
             {
 
-                    num = genRadomNum(numOfRC);
+                    genRadomNum(num);
 
                 //System.out.println("Random Number" + num);
                 numbers[row+i][col+j] = num;
@@ -96,12 +93,9 @@ public class Sudoku {
 
     //Generating random number
 
-    public int genRadomNum(int num){
-
-        Scanner sc = new Scanner(System.in);
-        return num = sc.nextInt();
-
-
+    public void genRadomNum(int num){
+        new Grid().getDigits();
+        
     }
 
     //check if the digit already exist in Row
@@ -131,9 +125,6 @@ public class Sudoku {
                 print += "\n";
         }
         print += "\n";
-
-        System.out.println("to String" + print);
-
         return print;
     }
 

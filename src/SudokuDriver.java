@@ -4,7 +4,7 @@ public class SudokuDriver {
 
     public static void main(String[] args) {
 
-        Sudoku sd = new Sudoku(6,1);
+        Sudoku sd = new Sudoku(9,20);
 
 
         //String s = JOptionPane.showInputDialog(null ,"Enter anything");
