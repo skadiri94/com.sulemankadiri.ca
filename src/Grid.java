@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Grid extends JFrame{
 	JPanel p =new JPanel();
-	JTextField textFields[]=new JTextField[81];
+	JTextField textFields[][]=new JTextField[9][9];
 	JPanel overallP =new JPanel();
 	JPanel northPanel = new JPanel();
 	JButton btnCheck = new JButton("Check");
@@ -21,14 +21,16 @@ public class Grid extends JFrame{
 		p.setSize(300,300);
 		int digits=0;
 
-		for(int i=0;i<81;i++){
-			textFields[i]=new JTextField();
-			textFields[i].setHorizontalAlignment(JTextField.CENTER);
-			textFields[i].setDocument(new JTextFieldLimit(1));
-			digits =(int) (Math.random()*((9-1)+1))+1;
-			textFields[i].setText(String.valueOf(digits));
+		for(int i=0;i<9;i++){
+            for (int j = 0; j < 9; j++) {
+                textFields[i][j] = new JTextField();
+                textFields[i][j].setHorizontalAlignment(JTextField.CENTER);
+                textFields[i][j].setDocument(new JTextFieldLimit(1));
+                digits = (int) (Math.random() * ((9 - 1) + 1)) + 1;
+                textFields[i][j].setText(String.valueOf(digits));
 
-			p.add(textFields[i]);
+                p.add(textFields[i][j]);
+            }
 		}
 		JLabel l = new JLabel("test label");
 		l.setSize(100,100);
@@ -41,12 +43,13 @@ public class Grid extends JFrame{
 		setVisible(true);
 	}
 
-	public int[] getDigits(){
+	public int[][] getDigits(){
 		//btnCheck.addActionListener(e ->
-		int[] allNums = new int[81];
+		int[] [] allNums = new int[9][9];
 
-			for (int i = 0; i < 81; i++)
-				allNums[i] = Integer.parseInt(textFields[i].getText());
+			for (int i = 0; i < 9; i++)
+                for (int j = 0; j < 9; j++)
+				    allNums[i][j] = Integer.parseInt(textFields[i][j].getText());
 			//}
 			return allNums;
 			//});

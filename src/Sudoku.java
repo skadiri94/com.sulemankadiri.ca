@@ -1,4 +1,6 @@
 /**The Sudoko Generator**/
+import java.util.*;
+
 public class Sudoku {
 
     private int[] numbers[];
@@ -39,11 +41,11 @@ public class Sudoku {
 
     public void fillSudoku(){
 
-        for (int i = 0; i<numOfRC; i=i+sqrtOfN) {
+        //for (int i = 0; i<numOfRC; i=i+sqrtOfN) {
 
             // for diagonal box, start coordinates->i==j
-            populateSudoku(i, i);
-        }
+            populateSudoku(9, 9);
+        //}
     }
     /**generating the Sudoku numbers **/
 
@@ -72,29 +74,31 @@ public class Sudoku {
         return true;
     }
 
-    void populateSudoku(int row,int col)
-    {
+    void populateSudoku(int row,int col) {
         int num = 0;
-        for (int i=0; i<sqrtOfN; i++)
+       /* for (int i=0; i<row; i++)
         {
-            for (int j=0; j<sqrtOfN; j++)
+            for (int j=0; j<col; j++)
             {
 
-                    genRadomNum(num);
+
 
                 //System.out.println("Random Number" + num);
-                numbers[row+i][col+j] = num;
+                //numbers[i][j] = num;
 
             }
-        }
+        }*/
+
+        genRadomNum();
     }
 
 
 
     //Generating random number
 
-    public void genRadomNum(int num){
-        new Grid().getDigits();
+    public void genRadomNum(){
+
+        System.out.println(Arrays.toString(new Grid().getDigits()));
         
     }
 
@@ -117,11 +121,14 @@ public class Sudoku {
     }
 
     public String toString(){
+        int allNums[][] = new int[9][9];
+        allNums = new Grid().getDigits();
+
             String print = "";
         for (int i = 0; i<numOfRC; i++)
         {
             for (int j = 0; j<numOfRC; j++)
-                print += numbers[i][j] + " ";
+                print += allNums[i][j] + " ";
                 print += "\n";
         }
         print += "\n";
